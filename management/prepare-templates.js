@@ -1,6 +1,10 @@
-const path = require('path'),
-  fs = require('fs'),
-  yaml = require('js-yaml');
+import path from 'path';
+import fs from 'fs';
+import yaml from 'js-yaml';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const SRC_PATH = path.resolve(__dirname, '../address-formatting/conf/'),
   TARGET_PATH = path.resolve(__dirname, '../src/templates/');
@@ -43,7 +47,7 @@ function convertAbbreviations(src, dest) {
 
 function convertCountryCodes(src, dest) {
   const contents = fs.readFileSync(path.resolve(SRC_PATH, src), 'utf8');
-  doc = yaml.load(contents.replace(/ \# /g, ' '));
+  const doc = yaml.load(contents.replace(/ \# /g, ' '));
   fs.writeFileSync(path.resolve(TARGET_PATH, dest), JSON.stringify(doc));
 }
 

@@ -3,8 +3,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import babel from '@rollup/plugin-babel';
 import terser from '@rollup/plugin-terser';
-
-import pkg from './package.json' with { type: "json" };
+import pkg from './package.json' assert { type: 'json' };
 
 export default [
   {
@@ -30,7 +29,7 @@ export default [
     input: 'src/index.js',
     output: [
       { file: pkg.main, format: 'cjs', exports: 'default' },
-      { file: pkg.module, format: 'es', exports: 'default' },
+      { file: pkg.module, format: 'esm', exports: 'default' },
     ],
     plugins: [
       json(),
@@ -39,6 +38,7 @@ export default [
       babel({
         exclude: ['node_modules/**']
       }),
+      terser(),
     ],
   },
 ];

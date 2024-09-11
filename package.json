@@ -1,11 +1,12 @@
 {
   "name": "@fragaria/address-formatter",
   "version": "6.2.0",
+  "type": "module",
   "description": "Universal international address formatting in Javascript",
-  "main": "dist/cjs/address-formatter.js",
+  "main": "dist/esm/address-formatter.js",
   "types": "index.d.ts",
   "browser": "dist/umd/address-formatter.js",
-  "module": "dist/es/address-formatter.js",
+  "module": "dist/esm/address-formatter.js",
   "scripts": {
     "lint": "semistandard src test",
     "lint:fix": "semistandard --fix src test",
